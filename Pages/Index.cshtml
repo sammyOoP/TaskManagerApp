@@ -1,0 +1,78 @@
+﻿@page
+@using MovingApp.Models;
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tasks[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tasks[0].Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tasks[0].DueDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tasks[0].Owner)
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model.Tasks)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => task.Title)
+                </td>
+                    @if(task.Status == (int)StatusTypes.Complete)
+                    {
+                        <td style="background-color: green;">Complete</td>
+                    }
+                    @if(task.Status == 1)
+                    {
+                        <td>Incomplete</td>
+                    }
+                    @if(task.Status == 2)
+                    {
+                        <td>Cancelled</td>
+                    }
+                <td>
+                    @Html.DisplayFor(modelItem => task.DueDate)
+                </td>
+                    @if(task.Owner != null)
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => task.Owner)
+                        </td>
+                    } 
+                    else 
+                    {
+                        <td>
+                            Unassigned - AKA Stacy
+                        </td>
+                    }
+                <td style="min-width: 185px">
+                    @if(task.Status == (int)StatusTypes.Incomplete || task.Status == (int)StatusTypes.Cancelled)
+                    {
+                        <a class="button" asp-page-handler="Complete" asp-route-id="@task.ID">Complete</a>
+                    }
+                    @if(task.Status == (int)StatusTypes.Complete)
+                    {
+                        <a class="button" asp-page-handler="Incomplete" asp-route-id="@task.ID">Incomplete</a>
+                    }
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<a class="button" asp-page="./MovingTasks/Create">Add Task</a>
