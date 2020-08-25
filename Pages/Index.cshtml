@@ -12,10 +12,14 @@
                 @Html.DisplayNameFor(model => model.Tasks[0].Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tasks[0].Status)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.StatusSort">
+                    @Html.DisplayNameFor(model => model.Tasks[0].Status)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tasks[0].DueDate)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                    @Html.DisplayNameFor(model => model.Tasks[0].DueDate)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Tasks[0].Owner)
@@ -42,7 +46,7 @@
                     }
                     @if(task.Status == 2)
                     {
-                        <td>Cancelled</td>
+                        <td style="background-color: red;">Cancelled</td>
                     }
                 <td>
                     @Html.DisplayFor(modelItem => task.DueDate)
@@ -59,14 +63,18 @@
                             Unassigned - AKA Stacy
                         </td>
                     }
-                <td style="min-width: 185px">
-                    @if(task.Status == (int)StatusTypes.Incomplete || task.Status == (int)StatusTypes.Cancelled)
+                <td style="min-width: 185x">
+                    @if(task.Status == (int)StatusTypes.Incomplete)
                     {
-                        <a class="button" asp-page-handler="Complete" asp-route-id="@task.ID">Complete</a>
+                        <div>
+                            <a class="button" asp-page-handler="Complete" asp-route-id="@task.ID" asp-route-sortOrder="@Model.CurrentSort">Complete</a> @("|")
+                            <a class="button" asp-page-handler="Cancel" asp-route-id="@task.ID" asp-route-sortOrder="@Model.CurrentSort">Cancel</a> @("|")
+                            <a class="button" asp-page="./MovingTasks/Edit" asp-route-id="@task.ID">Edit</a>
+                        </div>
                     }
-                    @if(task.Status == (int)StatusTypes.Complete)
+                    @if(task.Status == (int)StatusTypes.Complete  || task.Status == (int)StatusTypes.Cancelled)
                     {
-                        <a class="button" asp-page-handler="Incomplete" asp-route-id="@task.ID">Incomplete</a>
+                        <a class="button" asp-page-handler="Incomplete" asp-route-id="@task.ID" asp-route-sortOrder="@Model.CurrentSort">Incomplete</a>
                     }
                 </td>
             </tr>

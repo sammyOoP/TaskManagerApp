@@ -66,7 +66,7 @@ namespace MovingApp.Pages.MovingTasks
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Index");
         }
 
         private bool TaskExists(int id)

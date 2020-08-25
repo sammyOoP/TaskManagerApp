@@ -1,4 +1,6 @@
 @page
+@using MovingApp.Models
+@using MovingApp.Utils
 @model MovingApp.Pages.MovingTasks.EditModel
 
 @{
@@ -30,8 +32,13 @@
                 <span asp-validation-for="Task.Owner" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Task.Status" class="control-label"></label>
-                <input asp-for="Task.Status" class="form-control" />
+                @foreach (StatusTypes status in EnumUtil.GetValues<StatusTypes>())
+                {
+                    <div class="form-check">
+                        <input asp-for="Task.Status" type="radio" class="form-check-input" value="@((int)status)" />
+                        <label class="form-check-label">@status.ToString()</label>
+                    </div>
+                }
                 <span asp-validation-for="Task.Status" class="text-danger"></span>
             </div>
             <div class="form-group">
