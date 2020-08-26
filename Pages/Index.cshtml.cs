@@ -27,18 +27,26 @@ namespace MovingApp.Pages
         public string DateSort { get; set; }
         public string StatusSort { get; set; }
         public string CurrentSort { get; set; }
+        public string CurrentFilter { get; set; }
         public IList<MovingTask> Tasks { get; set; }
         public MovingTask Task { get; set; }
 
-        public async Task OnGetAsync(string sortOrder)
+        public async Task OnGetAsync(string sortOrder, string searchString)
         {
             //Code queryable and add sort. Linq used to retrieve full list.
             CurrentSort = sortOrder;
             DateSort = String.IsNullOrEmpty(sortOrder) ? "date_desc" : "";
             StatusSort = sortOrder == "Status" ? "status_desc" : "Status";
-            
+        
             IQueryable<MovingTask> movingTaskIQ = from t in _db.Task
                                                   select t;
+
+            if(searchString != null)
+            {
+                CurrentFilter = searchString;
+                movingTaskIQ = movingTaskIQ.Where(m => m.DueDate == DateTime.Parse(searchString));
+            }
+                                                
 
             switch(sortOrder)
             {
@@ -60,7 +68,7 @@ namespace MovingApp.Pages
 
         }
 
-        public async Task<IActionResult> OnGetCompleteAsync(int id, string sortOrder)
+        public async Task<IActionResult> OnGetCompleteAsync(int id, string sortOrder, string searchString)
         {
             if(!TaskExists(id))
             {
@@ -68,6 +76,7 @@ namespace MovingApp.Pages
             }
 
             CurrentSort = sortOrder;
+            CurrentFilter = searchString;
 
             Task = await _db.Task.FirstOrDefaultAsync(m => m.ID == id);
             Task.Status = (int)StatusTypes.Complete;
@@ -90,10 +99,10 @@ namespace MovingApp.Pages
                 }
             }
 
-            return RedirectToPage(new { sortOrder = CurrentSort});
+            return RedirectToPage(new { sortOrder = CurrentSort, searchString = CurrentFilter });
         }
 
-        public async Task<IActionResult> OnGetIncompleteAsync(int id, string sortOrder)
+        public async Task<IActionResult> OnGetIncompleteAsync(int id, string sortOrder, string searchString)
         {
             if(!TaskExists(id))
             {
@@ -101,6 +110,7 @@ namespace MovingApp.Pages
             }
 
             CurrentSort = sortOrder;
+            CurrentFilter = searchString;
 
             Task = await _db.Task.FirstOrDefaultAsync(m => m.ID == id);
             Task.Status = (int)StatusTypes.Incomplete;
@@ -123,10 +133,10 @@ namespace MovingApp.Pages
                 }
             }
 
-            return RedirectToPage(new { sortOrder = CurrentSort });
+            return RedirectToPage(new { sortOrder = CurrentSort, searchString = CurrentFilter });
         }
 
-        public async Task<IActionResult> OnGetCancelAsync(int id, string sortOrder)
+        public async Task<IActionResult> OnGetCancelAsync(int id, string sortOrder, string searchString)
         {
             if(!TaskExists(id))
             {
@@ -134,6 +144,7 @@ namespace MovingApp.Pages
             }
 
             CurrentSort = sortOrder;
+            CurrentFilter = searchString;
 
             Task = await _db.Task.FirstOrDefaultAsync(m => m.ID == id);
             Task.Status = (int)StatusTypes.Cancelled;
@@ -156,7 +167,7 @@ namespace MovingApp.Pages
                 }
             }
 
-            return RedirectToPage(new { sortOrder = CurrentSort });
+            return RedirectToPage(new { sortOrder = CurrentSort, searchString = CurrentFilter });
         }
 
         private bool TaskExists(int id)

@@ -5,6 +5,17 @@
     ViewData["Title"] = "Home page";
 }
 
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by date:
+            <input type="date" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -67,14 +78,14 @@
                     @if(task.Status == (int)StatusTypes.Incomplete)
                     {
                         <div>
-                            <a class="button" asp-page-handler="Complete" asp-route-id="@task.ID" asp-route-sortOrder="@Model.CurrentSort">Complete</a> @("|")
-                            <a class="button" asp-page-handler="Cancel" asp-route-id="@task.ID" asp-route-sortOrder="@Model.CurrentSort">Cancel</a> @("|")
+                            <a class="button" asp-page-handler="Complete" asp-route-id="@task.ID" asp-route-sortOrder="@Model.CurrentSort" asp-route-searchString="@Model.CurrentFilter">Complete</a> @("|")
+                            <a class="button" asp-page-handler="Cancel" asp-route-id="@task.ID" asp-route-sortOrder="@Model.CurrentSort" asp-route-searchString="@Model.CurrentFilter">Cancel</a> @("|")
                             <a class="button" asp-page="./MovingTasks/Edit" asp-route-id="@task.ID">Edit</a>
                         </div>
                     }
                     @if(task.Status == (int)StatusTypes.Complete  || task.Status == (int)StatusTypes.Cancelled)
                     {
-                        <a class="button" asp-page-handler="Incomplete" asp-route-id="@task.ID" asp-route-sortOrder="@Model.CurrentSort">Incomplete</a>
+                        <a class="button" asp-page-handler="Incomplete" asp-route-id="@task.ID" asp-route-sortOrder="@Model.CurrentSort" asp-route-searchString="@Model.CurrentFilter">Incomplete</a>
                     }
                 </td>
             </tr>
