@@ -51,15 +51,15 @@
                 </td>
                     @if(task.Status == (int)StatusTypes.Complete)
                     {
-                        <td style="background-color: green;">Complete</td>
+                        <td style="background-color: green;min-width: 150px;">Complete</td>
                     }
                     @if(task.Status == 1)
                     {
-                        <td>Incomplete</td>
+                        <td style="min-width: 150px;">Incomplete</td>
                     }
                     @if(task.Status == 2)
                     {
-                        <td style="background-color: red;">Cancelled</td>
+                        <td style="background-color: red;min-width: 150px;">Cancelled</td>
                     }
                 <td>
                     @Html.DisplayFor(modelItem => task.DueDate)
@@ -76,7 +76,7 @@
                             Unassigned - AKA Stacy
                         </td>
                     }
-                <td style="min-width: 185x">
+                <td style="min-width: 260px">
                     @if(task.Status == (int)StatusTypes.Incomplete)
                     {
                         <div>
