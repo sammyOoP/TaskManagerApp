@@ -52,6 +52,7 @@ namespace MovingApp
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseForwardedHeaders();
+            app.UseRequestLocalization();
 
             if (env.IsDevelopment())
             {
