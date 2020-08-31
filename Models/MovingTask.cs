@@ -15,6 +15,7 @@ namespace MovingApp.Models
         public int ID { get; set; }
         public string Title { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [DataType(DataType.Date)]
         public DateTime DueDate { get; set; }
         public string? Owner { get; set; }
