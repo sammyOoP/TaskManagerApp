@@ -39,6 +39,11 @@ namespace MovingApp
                 options.ForwardClientCertificate = false;
             });
 
+            services.Configure<RequestLocalizationOptions>(options => 
+            {
+                options.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("en-GB");
+            });
+
             services.AddDbContext<MovingAppContext>(options => 
                 options.UseSqlite(Configuration.GetConnectionString("MovingAppContext")));
         }
