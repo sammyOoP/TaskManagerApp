@@ -1,5 +1,6 @@
 ﻿@page
 @using MovingApp.Models;
+@using System.Globalization;
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -62,7 +63,7 @@
                         <td style="background-color: red;min-width: 150px;">Cancelled</td>
                     }
                 <td>
-                    @Html.DisplayFor(modelItem => task.DueDate)
+                    @Html.DisplayFor(modelItem => task.DueDate.ToString("dd-MM-yyyy", CultureInfo.InvariantCulture))
                 </td>
                     @if(task.Owner != null)
                     {
@@ -73,7 +74,7 @@
                     else 
                     {
                         <td>
-                            Unassigned - AKA Stacy
+                            Unassigned
                         </td>
                     }
                 <td style="min-width: 260px">
