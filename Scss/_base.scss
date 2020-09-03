@@ -15,6 +15,12 @@ for details on configuring this project to bundle and minify static web assets. 
   }
 }
 
+@mixin cb-input {
+  background-color: #171717;
+  border: none;
+  border-bottom: 1px solid #ffffff;
+}
+
 @include fontface(DKCrayonCrumble, DKCrayonCrumble, normal, normal);
 
 a.navbar-brand {
@@ -100,14 +106,17 @@ a.navbar-brand {
     }
   }
 
-  input[type="date"] {
-    background-color: #171717;
+  .chalkboard__input {
+    @include cb-input;
     color: #6c757d;
-    border: none;
-    border-bottom: 1px solid #ffffff;
     &:focus {
       color: #ffffff;
     }
+  }
+
+  .chalkboard__input--user {
+    @include cb-input;
+    color: #ffffff;
   }
   
   /* Sticky footer styles

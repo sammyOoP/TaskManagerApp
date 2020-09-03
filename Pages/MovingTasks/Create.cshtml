@@ -17,17 +17,17 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Task.Title" class="control-label"></label>
-                <input asp-for="Task.Title" class="form-control" />
+                <input class="chalkboard__input--user" asp-for="Task.Title" class="form-control" />
                 <span asp-validation-for="Task.Title" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Task.DueDate" class="control-label"></label>
-                <input asp-for="Task.DueDate" class="form-control" />
+                <input class="chalkboard__input--user" asp-for="Task.DueDate" class="form-control" />
                 <span asp-validation-for="Task.DueDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Task.Owner" class="control-label"></label>
-                <input asp-for="Task.Owner" class="form-control" />
+                <input class="chalkboard__input--user" asp-for="Task.Owner" class="form-control" />
                 <span asp-validation-for="Task.Owner" class="text-danger"></span>
             </div>
             <div class="form-group">

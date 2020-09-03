@@ -101,13 +101,20 @@ header {
   color: #ffffff;
 }
 
-input[type=date] {
+.chalkboard__input {
   background-color: #171717;
-  color: #6c757d;
   border: none;
   border-bottom: 1px solid #ffffff;
+  color: #6c757d;
 }
-input[type=date]:focus {
+.chalkboard__input:focus {
+  color: #ffffff;
+}
+
+.chalkboard__input--user {
+  background-color: #171717;
+  border: none;
+  border-bottom: 1px solid #ffffff;
   color: #ffffff;
 }
 
