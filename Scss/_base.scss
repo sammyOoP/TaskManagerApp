@@ -105,6 +105,9 @@ a.navbar-brand {
     color: #6c757d;
     border: none;
     border-bottom: 1px solid #ffffff;
+    &:focus {
+      color: #ffffff;
+    }
   }
   
   /* Sticky footer styles

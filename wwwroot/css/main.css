@@ -5,12 +5,12 @@
 }
 
 html {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 20px;
   }
 }
 html {
@@ -106,6 +106,9 @@ input[type=date] {
   color: #6c757d;
   border: none;
   border-bottom: 1px solid #ffffff;
+}
+input[type=date]:focus {
+  color: #ffffff;
 }
 
 /* Sticky footer styles
