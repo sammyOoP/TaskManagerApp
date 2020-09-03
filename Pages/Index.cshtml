@@ -14,7 +14,8 @@
                 <a type="submit">Search</a>
                 @if(!String.IsNullOrEmpty(Model.CurrentFilter))
                 {
-                    @:| <a asp-page="./Index">Back to full List</a>
+                    <text>|</text>
+                    <a asp-page="./Index">Back to full List</a>
                 }
             </p>
         </div>
