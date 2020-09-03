@@ -11,8 +11,11 @@
             <p>
                 Find by date:
                 <input class="chalkboard__input" type="date" name="SearchString" value="@Model.CurrentFilter" onchange="submit()" />
-                <a type="submit">Search</a> |
-                <a asp-page="./Index">Back to full List</a>
+                <a type="submit">Search</a>
+                @if(!String.IsNullOrEmpty(Model.CurrentFilter))
+                {
+                    @:| <a asp-page="./Index">Back to full List</a>
+                }
             </p>
         </div>
     </form>
@@ -53,11 +56,11 @@
                     {
                         <td class="tablecell__complete">Complete</td>
                     }
-                    @if(task.Status == 1)
+                    @if(task.Status == (int)StatusTypes.Incomplete)
                     {
                         <td>Incomplete</td>
                     }
-                    @if(task.Status == 2)
+                    @if(task.Status == (int)StatusTypes.Cancelled)
                     {
                         <td class="tablecell__cancelled">Cancelled</td>
                     }

@@ -1,12 +1,12 @@
 @page
+@using MovingApp.Models
 @model MovingApp.Pages.MovingTasks.IndexModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
+<h1>Mission Control</h1> 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
@@ -40,9 +40,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Owner)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
+                @if(item.Status == (int)StatusTypes.Complete)
+                {
+                        <td>Complete</td>
+                }
+                @if(item.Status == (int)StatusTypes.Incomplete)
+                {
+                        <td>Incomplete</td>
+                }
+                @if(item.Status == (int)StatusTypes.Cancelled)
+                {
+                        <td>Cancelled</td>
+                }
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
