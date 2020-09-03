@@ -101,6 +101,13 @@ header {
   color: #ffffff;
 }
 
+input[type=date] {
+  background-color: #171717;
+  color: #ffffff;
+  border: none;
+  border-bottom: 1px solid #ffffff;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 .border-top {
@@ -134,4 +141,7 @@ button.accept-policy {
 .ma-container {
   display: flex;
   flex-direction: row-reverse;
+}
+.ma-container form div.form-actions.no-color p a {
+  color: #fff9a6;
 }
