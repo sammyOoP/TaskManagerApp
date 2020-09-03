@@ -67,6 +67,10 @@ header {
   border-color: transparent;
 }
 
+.table .thead th {
+  border-color: transparent;
+}
+
 .tablecell__complete {
   color: #73d18c;
 }
