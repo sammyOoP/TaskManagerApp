@@ -99,6 +99,13 @@ a.navbar-brand {
       color: #ffffff;
     }
   }
+
+  input[type="date"] {
+    background-color: #171717;
+    color: #ffffff;
+    border: none;
+    border-bottom: 1px solid #ffffff;
+  }
   
   /* Sticky footer styles
   -------------------------------------------------- */
@@ -132,5 +139,14 @@ a.navbar-brand {
   .ma-container {
     display: flex;
     flex-direction: row-reverse;
+    & form {
+      & div.form-actions.no-color {
+        & p {
+          & a {
+            color: v.$anchor-color;
+          }
+        }
+      }
+    }
   }
   
