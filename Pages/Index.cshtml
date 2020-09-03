@@ -11,7 +11,7 @@
             <p>
                 Find by date:
                 <input type="date" name="SearchString" value="@Model.CurrentFilter" onchange="submit()" />
-                <input type="submit" value="Search" class="btn btn-primary" /> |
+                <a type="submit">Search</a> |
                 <a asp-page="./Index">Back to full List</a>
             </p>
         </div>
@@ -51,15 +51,15 @@
                 </td>
                     @if(task.Status == (int)StatusTypes.Complete)
                     {
-                        <td style="background-color: green;min-width: 150px;">Complete</td>
+                        <td class="tablecell__complete">Complete</td>
                     }
                     @if(task.Status == 1)
                     {
-                        <td style="min-width: 150px;">Incomplete</td>
+                        <td>Incomplete</td>
                     }
                     @if(task.Status == 2)
                     {
-                        <td style="background-color: red;min-width: 150px;">Cancelled</td>
+                        <td class="tablecell__cancelled">Cancelled</td>
                     }
                 <td>
                     @Html.DisplayFor(modelItem => task.DueDate)
@@ -76,7 +76,7 @@
                             Unassigned
                         </td>
                     }
-                <td style="min-width: 260px">
+                <td>
                     @if(task.Status == (int)StatusTypes.Incomplete)
                     {
                         <div>

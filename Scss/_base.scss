@@ -1,0 +1,128 @@
+@use 'variables' as v;
+
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+/* Mixins
+----------------------------------------------------- */
+@mixin fontface($name, $file, $weight: normal, $style: normal){
+  @font-face {
+    font-family: "#{$name}";
+    src: url('/fonts/#{$file}.woff') format('woff'),
+         url('/fonts/#{$file}.woff2') format('woff2');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
+@include fontface(DKCrayonCrumble, DKCrayonCrumble, normal, normal);
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+  }
+  
+  /* Provide sufficient contrast against white background */
+  a {
+    color: v.$anchor-color;
+
+    &:hover
+    {
+      color: v.$anchor-color;
+    }
+  }
+
+  body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    font-family: DKCrayonCrumble;
+    color: #ffffff;
+    background-color: #171717;
+  }
+
+  header {
+    color: #ffffff;
+    background-color: #171717;
+  }
+
+  .table {
+    color: #ffffff;
+    td {
+      border-color: transparent;
+    }
+    th {
+      border-color: transparent;
+    }
+  }
+
+  .tablecell__complete
+  {
+      color: #73d18c;
+  }
+
+  .tablecell__cancelled
+  {
+      color: #de6262;
+  }
+  
+  .btn-primary {
+    color: v.$button-primary-color;
+    background-color: v.$button-background-color;
+    border-color: v.$button-border-color;
+  }
+  
+  .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    border-color: v.$button-border-color;
+    color: v.$anchor-color;
+
+    &:hover
+    {
+      color: v.$anchor-color;
+    }
+  }
+
+  .navbar-toggler-icon {
+    color: #ffffff;
+  }
+
+  .navbar-toggler {
+    &.collapsed {
+      color: #ffffff;
+    }
+  }
+  
+  /* Sticky footer styles
+  -------------------------------------------------- */
+  
+  .border-top {
+    border-top: 1px solid v.$border-line-color;
+  }
+  .border-bottom {
+    border-bottom: 1px solid v.$border-line-color;
+  }
+  
+  .box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+  }
+  
+  button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+  }
+  
+  /* Sticky footer styles
+  -------------------------------------------------- */
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+  }
+  
+  .ma-container {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  
