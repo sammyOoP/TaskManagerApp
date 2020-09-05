@@ -25,24 +25,24 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.Tasks[0].Title)
             </th>
-            <th>
+            <th scope="col">
                 <a asp-page="./Index" asp-route-sortOrder="@Model.StatusSort">
                     @Html.DisplayNameFor(model => model.Tasks[0].Status)
                 </a>
             </th>
-            <th>
+            <th scope="col">
                 <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
                     @Html.DisplayNameFor(model => model.Tasks[0].DueDate)
                 </a>
             </th>
-            <th>
+            <th scope="col">
                 @Html.DisplayNameFor(model => model.Tasks[0].Owner)
             </th>
-            <th>
-                Action
+            <th scope="col">
+                Actions
             </th>
         </tr>
     </thead>
@@ -50,37 +50,37 @@
         @foreach (var task in Model.Tasks)
         {
             <tr>
-                <td>
+                <td data-label="Task">
                     @Html.DisplayFor(modelItem => task.Title)
                 </td>
                     @if(task.Status == (int)StatusTypes.Complete)
                     {
-                        <td class="tablecell__complete">Complete</td>
+                        <td class="tablecell__complete" data-label="Status">Complete</td>
                     }
                     @if(task.Status == (int)StatusTypes.Incomplete)
                     {
-                        <td>Incomplete</td>
+                        <td data-label="Status">Incomplete</td>
                     }
                     @if(task.Status == (int)StatusTypes.Cancelled)
                     {
-                        <td class="tablecell__cancelled">Cancelled</td>
+                        <td class="tablecell__cancelled" data-label="Status">Cancelled</td>
                     }
-                <td>
+                <td data-label="Due Date">
                     @Html.DisplayFor(modelItem => task.DueDate)
                 </td>
                     @if(task.Owner != null)
                     {
-                        <td>
+                        <td data-label="Owner">
                             @Html.DisplayFor(modelItem => task.Owner)
                         </td>
                     } 
                     else 
                     {
-                        <td>
+                        <td data-label="Owner">
                             Unassigned
                         </td>
                     }
-                <td>
+                <td data-label="Actions">
                     @if(task.Status == (int)StatusTypes.Incomplete)
                     {
                         <div>
@@ -95,7 +95,6 @@
                     }
                 </td>
             </tr>
-
         }
     </tbody>
 </table>

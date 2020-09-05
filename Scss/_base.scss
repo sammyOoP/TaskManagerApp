@@ -21,6 +21,10 @@ for details on configuring this project to bundle and minify static web assets. 
   border-bottom: 1px solid #ffffff;
 }
 
+@function size($screen-type) {
+  @return map-get(v.$screen-type-widths, $screen-type)
+}
+
 @include fontface(DKCrayonCrumble, DKCrayonCrumble, normal, normal);
 
 a.navbar-brand {
@@ -54,6 +58,8 @@ a.navbar-brand {
 
   .table {
     color: #ffffff;
+    table-layout: fixed;
+    width: 100%;
     td {
       border-color: transparent;
     }
@@ -80,6 +86,33 @@ a.navbar-brand {
       color: #de6262;
   }
   
+  @media screen and (max-width: size(mobile)) {
+    .table {
+      thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+      }
+      tr {
+        border-bottom: 1px solid #ffffff;
+        display: block;
+      }
+      td {
+        display: block;
+        text-align: right;
+        &::before {
+          content: attr(data-label);
+          float: left;
+        }
+      }
+    }
+  }
+
   .btn-primary {
     color: v.$button-primary-color;
     background-color: v.$button-background-color;
