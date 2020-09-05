@@ -112,6 +112,10 @@ header {
   border-color: #1861ac;
 }
 
+.mb-3 {
+  padding: 8px 15px;
+}
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   border-color: #1861ac;
   color: #fff9a6;
@@ -124,6 +128,10 @@ header {
   color: #ffffff;
 }
 
+.navbar-toggler {
+  padding: 0;
+  border: none;
+}
 .navbar-toggler.collapsed {
   color: #ffffff;
 }
