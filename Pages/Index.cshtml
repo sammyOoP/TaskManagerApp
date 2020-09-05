@@ -55,7 +55,7 @@
                 </td>
                     @if(task.Status == (int)StatusTypes.Complete)
                     {
-                        <td class="tablecell__complete" data-label="Status">Complete</td>
+                        <td data-label="Status"><p class="tablecell__complete">Complete</p></td>
                     }
                     @if(task.Status == (int)StatusTypes.Incomplete)
                     {
@@ -63,7 +63,7 @@
                     }
                     @if(task.Status == (int)StatusTypes.Cancelled)
                     {
-                        <td class="tablecell__cancelled" data-label="Status">Cancelled</td>
+                        <td data-label="Status"><p class="tablecell__cancelled">Cancelled</p></td>
                     }
                 <td data-label="Due Date">
                     @Html.DisplayFor(modelItem => task.DueDate)
