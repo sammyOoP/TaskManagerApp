@@ -1,0 +1,192 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 20px;
+  }
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+/* Buttons */
+/* Borders */
+/* Media sizes */
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+/* Mixins
+----------------------------------------------------- */
+@font-face {
+  font-family: "DKCrayonCrumble";
+  src: url("/fonts/DKCrayonCrumble.woff") format("woff"), url("/fonts/DKCrayonCrumble.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #fff9a6;
+}
+a:hover {
+  color: #fff9a6;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  font-family: DKCrayonCrumble;
+  color: #ffffff;
+  background-color: #171717;
+}
+
+header {
+  color: #ffffff;
+  background-color: #171717;
+}
+
+.table {
+  color: #ffffff;
+  table-layout: fixed;
+  width: 100%;
+}
+.table td {
+  border-color: transparent;
+}
+.table th {
+  border-color: transparent;
+}
+
+.table thead th {
+  border-color: transparent;
+}
+
+.tablecell__complete {
+  color: #73d18c;
+}
+
+.tablecell__cancelled {
+  color: #de6262;
+}
+
+@media screen and (max-width: 576px) {
+  .table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  .table tr {
+    border-bottom: 1px solid #ffffff;
+    display: block;
+  }
+  .table td {
+    display: block;
+    text-align: right;
+  }
+  .table td::before {
+    content: attr(data-label);
+    float: left;
+  }
+}
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.mb-3 {
+  padding: 8px 15px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  border-color: #1861ac;
+  color: #fff9a6;
+}
+.nav-pills .nav-link.active:hover, .nav-pills .show > .nav-link:hover {
+  color: #fff9a6;
+}
+
+.navbar-toggler-icon {
+  color: #ffffff;
+}
+
+.navbar-toggler {
+  padding: 0;
+  border: none;
+}
+.navbar-toggler.collapsed {
+  color: #ffffff;
+}
+
+.chalkboard__input {
+  background-color: #171717;
+  border: none;
+  border-bottom: 1px solid #ffffff;
+  color: #6c757d;
+}
+.chalkboard__input:focus {
+  color: #ffffff;
+}
+
+.chalkboard__input--user {
+  background-color: #171717;
+  border: none;
+  border-bottom: 1px solid #ffffff;
+  color: #ffffff;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+  /* Vertically center the text there */
+}
+
+.ma-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.ma-container form div.form-actions.no-color p a {
+  color: #fff9a6;
+}

@@ -1,0 +1,102 @@
+﻿@page
+@using MovingApp.Models;
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="ma-container">
+    <form asp-page="./Index" method="get">
+        <div class="form-actions no-color">
+            <p>
+                Find by date:
+                <input class="chalkboard__input" type="date" name="SearchString" value="@Model.CurrentFilter" onchange="submit()" />
+                <a type="submit">Search</a>
+                @if(!String.IsNullOrEmpty(Model.CurrentFilter))
+                {
+                    <text>|</text>
+                    <a asp-page="./Index">Back to full List</a>
+                }
+            </p>
+        </div>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Tasks[0].Title)
+            </th>
+            <th scope="col">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.StatusSort">
+                    @Html.DisplayNameFor(model => model.Tasks[0].Status)
+                </a>
+            </th>
+            <th scope="col">
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                    @Html.DisplayNameFor(model => model.Tasks[0].DueDate)
+                </a>
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Tasks[0].Owner)
+            </th>
+            <th scope="col">
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model.Tasks)
+        {
+            <tr>
+                <td data-label="Task">
+                    @Html.DisplayFor(modelItem => task.Title)
+                </td>
+                    @if(task.Status == (int)StatusTypes.Complete)
+                    {
+                        <td data-label="Status"><p class="tablecell__complete">Complete</p></td>
+                    }
+                    @if(task.Status == (int)StatusTypes.Incomplete)
+                    {
+                        <td data-label="Status">Incomplete</td>
+                    }
+                    @if(task.Status == (int)StatusTypes.Cancelled)
+                    {
+                        <td data-label="Status"><p class="tablecell__cancelled">Cancelled</p></td>
+                    }
+                <td data-label="Due Date">
+                    @Html.DisplayFor(modelItem => task.DueDate)
+                </td>
+                    @if(task.Owner != null)
+                    {
+                        <td data-label="Owner">
+                            @Html.DisplayFor(modelItem => task.Owner)
+                        </td>
+                    } 
+                    else 
+                    {
+                        <td data-label="Owner">
+                            Unassigned
+                        </td>
+                    }
+                <td data-label="Actions">
+                    @if(task.Status == (int)StatusTypes.Incomplete)
+                    {
+                        <div>
+                            <a class="button" asp-page-handler="Complete" asp-route-id="@task.ID" asp-route-sortOrder="@Model.CurrentSort" asp-route-searchString="@Model.CurrentFilter">Complete</a> @("|")
+                            <a class="button" asp-page-handler="Cancel" asp-route-id="@task.ID" asp-route-sortOrder="@Model.CurrentSort" asp-route-searchString="@Model.CurrentFilter">Cancel</a> @("|")
+                            <a class="button" asp-page="./MovingTasks/Edit" asp-route-id="@task.ID">Edit</a>
+                        </div>
+                    }
+                    @if(task.Status == (int)StatusTypes.Complete  || task.Status == (int)StatusTypes.Cancelled)
+                    {
+                        <a class="button" asp-page-handler="Incomplete" asp-route-id="@task.ID" asp-route-sortOrder="@Model.CurrentSort" asp-route-searchString="@Model.CurrentFilter">Incomplete</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="button" asp-page="./MovingTasks/Create">Add Task</a>
