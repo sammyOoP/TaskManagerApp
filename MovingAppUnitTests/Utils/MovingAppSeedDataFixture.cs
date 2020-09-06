@@ -16,7 +16,7 @@ using MovingApp.Pages;
 using MovingApp.Data;
 using MovingApp.Models;
 
-namespace MovingAppTests.Utils
+namespace MovingAppUnitTests.Utils
 {
     public class MovingAppSeedDataFixture : IDisposable
     {
@@ -26,7 +26,7 @@ namespace MovingAppTests.Utils
         {
             //Arrange
             var optionsBuilder = new DbContextOptionsBuilder<MovingAppContext>()
-                .UseInMemoryDatabase("MovingAppTestDb")
+                .UseInMemoryDatabase("MovingAppTestDb" + new Guid())
                 .Options;
 
             MovingAppContext = new MovingAppContext(optionsBuilder);

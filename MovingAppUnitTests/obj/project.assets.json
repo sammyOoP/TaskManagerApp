@@ -10378,11 +10378,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\Web\\MovingApp - Copy\\MovingAppTests\\MovingAppTests.csproj",
-      "projectName": "MovingAppTests",
-      "projectPath": "C:\\Projects\\Web\\MovingApp - Copy\\MovingAppTests\\MovingAppTests.csproj",
+      "projectUniqueName": "C:\\Projects\\Web\\MovingApp - Copy\\MovingAppUnitTests\\MovingAppUnitTests.csproj",
+      "projectName": "MovingAppUnitTests",
+      "projectPath": "C:\\Projects\\Web\\MovingApp - Copy\\MovingAppUnitTests\\MovingAppUnitTests.csproj",
       "packagesPath": "C:\\Users\\sampr\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\Web\\MovingApp - Copy\\MovingAppTests\\obj\\",
+      "outputPath": "C:\\Projects\\Web\\MovingApp - Copy\\MovingAppUnitTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\sampr\\AppData\\Roaming\\NuGet\\NuGet.Config"

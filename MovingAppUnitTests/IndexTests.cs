@@ -15,12 +15,19 @@ using Microsoft.Extensions.Logging.Abstractions;
 using MovingApp.Pages;
 using MovingApp.Data;
 using MovingApp.Models;
-using MovingAppTests.Utils;
+using MovingAppUnitTests.Utils;
 
-namespace MovingAppTests
+namespace MovingAppUnitTests
 {
     public class IndexTests : IClassFixture<MovingAppSeedDataFixture>
     {
+        MovingAppSeedDataFixture _fixture;
+
+        public IndexTests(MovingAppSeedDataFixture fixture) 
+        {
+            _fixture = fixture;
+        }
+
         [Theory]
         [InlineData(4, false)]
         [InlineData(0, false)]
@@ -28,16 +35,13 @@ namespace MovingAppTests
         [InlineData(1, true)]
         public void TaskExists_UnfoundValuesShouldReturnFalse(int x, bool expected)
         {
-            using (var fixture = new MovingAppSeedDataFixture())
-            {
-                var pageModel = new IndexModel(new NullLogger<IndexModel>(), fixture.MovingAppContext);
+            var pageModel = new IndexModel(new NullLogger<IndexModel>(), _fixture.MovingAppContext);
 
-                //Evaluate
-                bool actual = pageModel.TaskExists(x);
+            //Evaluate
+            bool actual = pageModel.TaskExists(x);
 
-                //Assert
-                Assert.Equal(actual, expected);
-            }
+            //Assert
+            Assert.Equal(actual, expected);
         }
     }
 }
