@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using Xunit;
+using System.Collections.Generic;
 using Moq;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -42,6 +43,24 @@ namespace MovingAppUnitTests
 
             //Assert
             Assert.Equal(actual, expected);
+        }
+
+        [Fact]
+        public async void OnGetAsync_ShouldPopulateListOfTasks()
+        {
+            //Arrange
+            var pageModel = new IndexModel(new NullLogger<IndexModel>(), _fixture.MovingAppContext);
+            List<MovingTask> expectedMovingTasks = _fixture.MovingAppContext.Task.ToList<MovingTask>();
+
+            //Act
+            await pageModel.OnGetAsync(null, null);
+
+            //Assert
+            var actualMovingTasks = Assert.IsAssignableFrom<List<MovingTask>>(pageModel.Tasks);
+            Assert.Equal(
+                expectedMovingTasks.OrderBy(t => t.ID).Select(t => t.Title),
+                actualMovingTasks.OrderBy(t => t.ID).Select(t => t.Title)
+            );
         }
     }
 }

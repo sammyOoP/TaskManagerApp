@@ -8,7 +8,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using MovingApp.Data;
 using MovingApp.Models;
-using MovingApp.Utils;
 
 namespace MovingApp.Pages
 {
